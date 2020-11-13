@@ -2,15 +2,16 @@
 #define App_h
 
 #include "GlutApp.h"
-#include "Rect.h"
+#include "Shape.h"
+// #include "Rect.h"
 #include "Circle.h"
 #include "Triangle.h"
+#include "Square.h"
 
 class App: public GlutApp {
-
-    Rect* rect;
-    Circle* circ;
-    Triangle* tri;
+    Shape* sh;
+    Shape* ap;
+    Shape* e;
 public:
     
     App(int argc, char** argv, int width, int height, const char* title);

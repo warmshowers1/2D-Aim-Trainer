@@ -69,10 +69,10 @@ Circle::~Circle(){
 }
 
 bool Circle::contains(float x, float y) const { // Edit this for circles
-    if((x > r) || (x < (-1 * r)) || (y > r) || (y < (-1 * r)))
+    if((x > (this->x + r)) || (x < (-1 * (this->x + r))) || (y > (this->y + r)) || (y < (-1 * (this->y + r))))
         return false;
     else{
-        float dy = sin(acos(x)); // Should be the upper/lower y coordinate
+        float dy = r * sinf(acosf((x - this->x)/r)) + this->y; // Should be the upper/lower y coordinate
         if((y > dy) || (y < (-1 * dy)))
             return false;
     }

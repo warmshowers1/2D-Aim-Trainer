@@ -1,7 +1,9 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-class Circle{
+#include "Shape.h"
+
+class Circle: public Shape{
 	float x;
 	float y;
 

@@ -3,13 +3,15 @@
 
 
 App::App(int argc, char** argv, int width, int height, const char* title): GlutApp(argc, argv, width, height, title){
-    circ = new Circle(0.5, 0, 0.05, 1, 0, 0);
-    tri = new Triangle(-0.5, 0, 0.05, 1, 0, 0);
+    sh = new Circle(0.5, 0, 0.05, 1, 0, 0);
+    ap = new Triangle(0.5, 0.5, 0.05, 0, 1, 0);
+    e = new Square(0, 0.5, 0.05, 0, 0, 1);
 }
 
 void App::draw() {
-    tri->draw();
-    circ->draw();
+    sh->draw();
+    ap->draw();
+    e->draw();
 }
 
 void App::keyDown(unsigned char key, float x, float y){
@@ -20,5 +22,7 @@ void App::keyDown(unsigned char key, float x, float y){
 
 App::~App(){
     std::cout << "Exiting..." << std::endl;
-    delete rect;
+    delete sh;
+    delete ap;
+    delete e;
 }

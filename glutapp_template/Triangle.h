@@ -1,7 +1,9 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
-class Triangle{
+#include "Shape.h"
+
+class Triangle: public Shape{
 	float x;
 	float y;
 
