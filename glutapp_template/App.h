@@ -4,11 +4,13 @@
 #include "GlutApp.h"
 #include "Rect.h"
 #include "Circle.h"
+#include "Triangle.h"
 
 class App: public GlutApp {
 
     Rect* rect;
     Circle* circ;
+    Triangle* tri;
 public:
     
     App(int argc, char** argv, int width, int height, const char* title);

@@ -4,9 +4,11 @@
 
 App::App(int argc, char** argv, int width, int height, const char* title): GlutApp(argc, argv, width, height, title){
     circ = new Circle(0.5, 0, 0.05, 1, 0, 0);
+    tri = new Triangle(-0.5, 0, 0.05, 1, 0, 0);
 }
 
 void App::draw() {
+    tri->draw();
     circ->draw();
 }
 
