@@ -3,11 +3,11 @@
 
 
 App::App(int argc, char** argv, int width, int height, const char* title): GlutApp(argc, argv, width, height, title){
-    rect = new Rect();
+    circ = new Circle(0.5, 0, 0.05, 1, 0, 0);
 }
 
 void App::draw() {
-    rect->draw();
+    circ->draw();
 }
 
 void App::keyDown(unsigned char key, float x, float y){

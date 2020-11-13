@@ -3,10 +3,12 @@
 
 #include "GlutApp.h"
 #include "Rect.h"
+#include "Circle.h"
 
 class App: public GlutApp {
 
     Rect* rect;
+    Circle* circ;
 public:
     
     App(int argc, char** argv, int width, int height, const char* title);
