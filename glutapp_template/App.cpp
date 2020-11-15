@@ -3,15 +3,11 @@
 
 
 App::App(int argc, char** argv, int width, int height, const char* title): GlutApp(argc, argv, width, height, title){
-    sh = new Circle(0.5, 0, 0.05, 1, 0, 0);
-    ap = new Triangle(0.5, 0.5, 0.05, 0, 1, 0);
-    e = new Square(0, 0.5, 0.05, 0, 0, 1);
+     game = new Game(width);
 }
 
 void App::draw() {
-    sh->draw();
-    ap->draw();
-    e->draw();
+    game->draw();
 }
 
 void App::keyDown(unsigned char key, float x, float y){
@@ -19,10 +15,16 @@ void App::keyDown(unsigned char key, float x, float y){
         exit(0);
     }
 }
+void App::leftMouseDown(float x, float y){
+    game->check(x,y);
+    // std::cout << "Left mouse down" << std::endl; // For testing
+}
+
+void App::idle(){
+    redraw();
+}
 
 App::~App(){
     std::cout << "Exiting..." << std::endl;
-    delete sh;
-    delete ap;
-    delete e;
+    // delete game;
 }
