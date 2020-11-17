@@ -1,5 +1,6 @@
 #include "Game.h"
 #include<iostream>
+#include<fstream>
 #include <math.h>
 #include <deque>
 #include <time.h>
@@ -77,10 +78,51 @@ void Game::draw(){
             test->setY(float((rand() % 190) - 90) / 100);
             click = time(NULL);
         }
-        // if(difftime(time(NULL), begin) > 30)
-        // 10 seconds for testing
-        if(difftime(time(NULL), begin) > 9)
+        // if(difftime(time(NULL), begin) > 29)
+        // When game ends
+        if(difftime(time(NULL), begin) > 9){ // 10 seconds for testing
             start = false;
+            ofstream result;
+            result.open("result.csv", fstream::app);
+            // Check shape and put in csv
+            switch(st->getSh()){
+            case 0:
+                result << "Square, ";
+                break;
+            case 1:
+                result << "Triangle, ";
+                break;
+            case 2:
+                result << "Circle, ";
+                break;
+            default:
+                result << "[Shape], "; // Something went wrong
+            }
+            
+            // Check color and put in csv
+            if(st->getR() == 1) // If red at all
+                result << "Red, ";
+            else if(st->getB() == 0) // If not blue, green
+                result << "Green, ";
+            else if(st->getB() == 1) // Must be blue
+                result << "Blue, ";
+            else
+                result << "[Color], "; // Something went wrong
+            
+            // Check difficulty and put in csv
+            if(test->getW() >= 0.2) // If red at all
+                result << "1, ";
+            else if(test->getW() >= 0.1) // If not blue, green
+              result << "2, ";
+            else if(test->getW() >= 0.05) // Must be blue
+              result << "3, ";
+            else
+              result << "[Level], "; // Something went wrong
+            
+            result << to_string(hits) << ", " << to_string(clicks) << ", " << to_string(float(hits) / clicks * 100) << "%, \n";
+            
+            result.close();
+        }
         // cout << "Target coords: (" + 
         if(hits < 10)
             text->renderText(0.75, 0.9, "Hits: " + to_string(hits));
@@ -96,11 +138,11 @@ void Game::draw(){
     }
 }
 
-void Game::check(float x, float y){ //reference paint buttons for color stuff
+void Game::check(float x, float y){ //Runs for every click
     srand(seed++);// Set seed
     // If the game started
     clicks++;
-    if (st->contains(x,y)){
+    if(st->contains(x,y)){
         hits = 0;
         clicks = 0;
         start = true;
