@@ -16,8 +16,8 @@ using namespace std;
 Shape::Shape(){
 	x = 0;
 	y = 0.1;
-	red = 0;
-	green = 1;
+	red = 1;
+	green = 0;
 	blue = 0;
     radius = .1;
 

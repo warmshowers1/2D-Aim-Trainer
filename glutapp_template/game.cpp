@@ -41,13 +41,13 @@ Game::Game(float width){
 void Game::draw(){
     // In menu
     if(!start){
-        if (test->getSh() == 0){
-            st->drawRect();
-        } else if (test->getSh() == 1){
-            st->drawTri();
-        } else{
-            st->drawCirc();
-        }
+        if (test->getSh() == 0)      // 0 = Square
+          st->drawRect();
+        else if (test->getSh() == 1) // 1 = Triangle
+          st->drawTri();
+        else                         // 2 = Circle
+          st->drawCirc();
+        
 
         shapes[0]->drawRect();
         shapes[1]->drawTri();
@@ -78,9 +78,9 @@ void Game::draw(){
             test->setY(float((rand() % 190) - 90) / 100);
             click = time(NULL);
         }
-        // if(difftime(time(NULL), begin) > 29)
+        if(difftime(time(NULL), begin) > 29){ // 30 seconds
         // When game ends
-        if(difftime(time(NULL), begin) > 9){ // 10 seconds for testing
+        // if(difftime(time(NULL), begin) > 9){ // 10 seconds for testing
             start = false;
             ofstream result;
             result.open("result.csv", fstream::app);
